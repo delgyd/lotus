@@ -50,6 +50,14 @@ func (m *mockStorageMinerAPI) StateNetworkVersion(ctx context.Context, key types
 	panic("implement me")
 }
 
+func (m *mockStorageMinerAPI) GasEstimateFeeCap(context.Context, *types.Message, int64, types.TipSetKey) (types.BigInt, error) {
+	return big.Zero(), nil
+}
+
+func (m *mockStorageMinerAPI) GasEstimateGasPremium(_ context.Context, nblocksincl uint64, sender address.Address, gaslimit int64, tsk types.TipSetKey) (types.BigInt, error) {
+	return big.Zero(), nil
+}
+
 func (m *mockStorageMinerAPI) ChainGetRandomnessFromTickets(ctx context.Context, tsk types.TipSetKey, personalization crypto.DomainSeparationTag, randEpoch abi.ChainEpoch, entropy []byte) (abi.Randomness, error) {
 	return abi.Randomness("ticket rand"), nil
 }
